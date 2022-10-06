@@ -1,0 +1,21 @@
+# GraphQL schema example
+#
+# https://gqlgen.com/getting-started/
+
+type WebVitalsMetric {
+  name: String!
+  value: String!
+}
+
+type Query {
+  web_vitals_metric: [WebVitalsMetric!]!
+}
+
+input WebVitalsMetricCreateInput {
+  name: String!
+  value: String!
+}
+
+type Mutation {
+  createWebVitalsMetric(data: WebVitalsMetricCreateInput): WebVitalsMetric!
+}
