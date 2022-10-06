@@ -5,7 +5,6 @@ package graph
 
 import (
 	"context"
-	"fmt"
 
 	"github.com/ofuji-works/blog-app-bff/graph/generated"
 	"github.com/ofuji-works/blog-app-bff/graph/model"
@@ -22,7 +21,12 @@ func (r *mutationResolver) CreateWebVitalsMetric(ctx context.Context, data *mode
 
 // WebVitalsMetric is the resolver for the web_vitals_metric field.
 func (r *queryResolver) WebVitalsMetric(ctx context.Context) ([]*model.WebVitalsMetric, error) {
-	panic(fmt.Errorf("not implemented: WebVitalsMetric - web_vitals_metric"))
+	web_vitals_metric := &model.WebVitalsMetric{
+		Name:  "FCP",
+		Value: "1,8",
+	}
+	r.web_vitals_metric = append(r.web_vitals_metric, web_vitals_metric)
+	return r.web_vitals_metric, nil
 }
 
 // Mutation returns generated.MutationResolver implementation.
