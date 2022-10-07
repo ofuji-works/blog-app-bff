@@ -13,19 +13,15 @@ import (
 // CreateWebVitalsMetric is the resolver for the createWebVitalsMetric field.
 func (r *mutationResolver) CreateWebVitalsMetric(ctx context.Context, data *model.WebVitalsMetricCreateInput) (*model.WebVitalsMetric, error) {
 	web_vitals_metric := &model.WebVitalsMetric{
-		Name:  data.Name,
-		Value: data.Value,
+		Name:  "FCP",
+		Value: "1,8",
 	}
+	r.web_vitals_metric = append(r.web_vitals_metric, web_vitals_metric)
 	return web_vitals_metric, nil
 }
 
 // WebVitalsMetric is the resolver for the web_vitals_metric field.
 func (r *queryResolver) WebVitalsMetric(ctx context.Context) ([]*model.WebVitalsMetric, error) {
-	web_vitals_metric := &model.WebVitalsMetric{
-		Name:  "FCP",
-		Value: "1,8",
-	}
-	r.web_vitals_metric = append(r.web_vitals_metric, web_vitals_metric)
 	return r.web_vitals_metric, nil
 }
 
